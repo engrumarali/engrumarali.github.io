@@ -1,10 +1,10 @@
-const PRECACHE = 'precache-v1-3';
+const PRECACHE = 'precache-v1-4';
 const PRECACHE_URLS = ['index.html', './', 'demo.js'];
 
-const expectedCaches = ['precache-v1-3'];
+const expectedCaches = ['precache-v1-4'];
 
 self.addEventListener('install', event => {
-  console.log('precache-v1-3 installing…');
+  console.log('precache-v1-4 installing…');
 
   // cache a horse SVG into a new cache, precache-v1-3
   event.waitUntil(
@@ -26,7 +26,7 @@ self.addEventListener('activate', event => {
         }
       })
     )).then(() => {
-      console.log('precache-v1-3 now ready to handle fetches!');
+      console.log('precache-v1-4 now ready to handle fetches!');
     })
   );
   self.clients.claim();
