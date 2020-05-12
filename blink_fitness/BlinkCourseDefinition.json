@@ -1,0 +1,82 @@
+{
+  "id": "CourseBlink",
+  "title": "Featured workout:",
+  "description": "Blink Fitness",
+  "category": "Be Fit",
+  "canBeFeaturedWorkout": true,
+  "hasCustomSummary": true,
+  "summaryTitle": "Endorphins on us!",
+  "supportedFEs": {
+    "tred": true,
+    "efx": true,
+    "amt": true,
+    "bike": true,
+    "climber": true
+  },
+  "intervalBetweenPromotions": 0,
+  "promotionDuration": 180,
+  "promotionsAvailabilityTimeInWorkout": 7200,
+  "profileFillColor": "rgba(255, 255, 255, 0.3)",
+  "profileProgressFillColor": "#459FCF",
+  "profileLeadingEdgeColor": "#DCF671",
+  "profileOutlineColor": "#FFFFFF",
+  "profileSvgUpperLimit": 300,
+  "profileSvgXPoint": 20,
+  "profileSvgYPoint": 137,
+  "backgroundLinearGradient": "",
+  "backgroundBlur": 0,
+  "images": {
+    "P62": {
+      "welcomeScreens": [
+        {
+          "background": "/blink/course-provider/background-images/P62-Welcome-BHT-background.jpg",
+          "preview": "/blink/course-provider/preview-images/P62-Welcome-BHT-foreground.jpg"
+        },
+        {
+          "background": "/blink/course-provider/background-images/P62-Welcome-RSG-background.jpg",
+          "preview": "/blink/course-provider/preview-images/P62-Welcome-RSG-foreground.jpg"
+        },
+        {
+          "background": "/blink/course-provider/background-images/P62-Welcome-LGFB-Background.jpg",
+          "preview": "/blink/course-provider/preview-images/P62-Welcome-LGFB-foreground.jpg"
+        }
+      ],
+      "workoutBackgrounds": [
+        "/blink/course-provider/background-images/blink-welcome-P62.jpg"
+      ],
+      "summaryBackgrounds": [
+        "/blink/course-provider/background-images/blink-summary-P62.jpg"
+      ],
+      "promotions": [
+        "/blink/course-provider/background-images/P62---Workout-w-Promo---Blink-App.jpg",
+        "/blink/course-provider/background-images/P62---Workout-w-Promo---Plus-1.jpg",
+        "/blink/course-provider/background-images/P62---Workout-w-Promo---PT.jpg"
+      ]
+    },
+    "P82": {
+      "welcomeScreens": [
+        {
+          "background": "/blink/course-provider/background-images/P82-Welcome-BHT-background.jpg",
+          "preview": "/blink/course-provider/preview-images/P82-Welcome-BHT-foreground.jpg"
+        },
+        {
+          "background": "/blink/course-provider/background-images/P82-Welcome-RSG-background.jpg",
+          "preview": "/blink/course-provider/preview-images/P82-Welcome-RSG-foreground.jpg"
+        },
+        {
+          "background": "/blink/course-provider/background-images/P82-Welcome-LGFB-Background.jpg",
+          "preview": "/blink/course-provider/preview-images/P82-Welcome-LGFB-foreground.jpg"
+        }
+      ],
+      "workoutBackgrounds": [],
+      "summaryBackgrounds": [
+        "/blink/course-provider/background-images/blink-summary-P82.jpg"
+      ],
+      "promotions": [
+        "/blink/course-provider/background-images/P82---Workout-w-Promo---Blink-App.jpg",
+        "/blink/course-provider/background-images/P82---Workout-w-Promo---Plus-1.jpg",
+        "/blink/course-provider/background-images/P82---Workout-w-Promo---PT.jpg"
+      ]
+    }
+  }
+}
