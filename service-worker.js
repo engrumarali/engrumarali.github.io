@@ -1,39 +1,59 @@
-/**
- * Welcome to your Workbox-powered service worker!
- *
- * You'll need to register this file in your web app and you should
- * disable HTTP caching for this file too.
- * See https://goo.gl/nhQhGp
- *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
- */
+const PRECACHE = 'precache-v1-4';
+const PRECACHE_URLS = ['index.html', './', 'demo.js'];
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+const expectedCaches = ['precache-v1-4'];
 
-importScripts(
-  "/precache-manifest.3ed3e86b770ca87f72e724dd54d4bfd6.js"
-);
+self.addEventListener('install', event => {
+  console.log('precache-v1-4 installing…');
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+  // cache a horse SVG into a new cache, precache-v1-3
+  event.waitUntil(
+    caches
+      .open(PRECACHE)
+      .then((cache) => cache.addAll(PRECACHE_URLS))
+      .then(self.skipWaiting())
+  );
 });
 
-workbox.core.clientsClaim();
+self.addEventListener('activate', event => {
+  // delete any caches that aren't in expectedCaches
+  // which will get rid of static-v1
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.map(key => {
+        if (!expectedCaches.includes(key)) {
+          return caches.delete(key);
+        }
+      })
+    )).then(() => {
+      console.log('precache-v1-4 now ready to handle fetches!');
+    })
+  );
+  self.clients.claim();
+  self.clients.matchAll().then(function (clients) {
+    clients.forEach(function (client) {
+      console.log("💎 ------- send SET_OFFLINE_READY " + client);
+      client.postMessage({
+        command: 'SET_OFFLINE_READY',
+      });
+    });
+  });
+});
 
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
-
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"), {
-  
-  blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
+self.addEventListener('fetch', (event) => {
+  console.log('🚩 Fetch Event');
+  if (event.request.url.startsWith(self.location.origin)) {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        if (cachedResponse) {
+          console.log('💠 Fetch Cache');
+          return cachedResponse;
+        }
+        return fetch(event.request).then((response) => {
+          console.log('💡 Fetch Internet');
+          return response;
+        });
+      })
+    );
+  }
 });
