@@ -47,14 +47,3 @@ window.navigator.serviceWorker.onmessage = function (event) {
   if (event.data.command === 'SET_OFFLINE_READY')
     precorWorkout.setDefaultURL();
 };
-
-navigator.serviceWorker.register('/sw-test/sw.js', {scope: 'sw-test'}).then(function(registration) {
-  // registration worked
-  console.log('Registration succeeded.');
-  button.onclick = function() {
-    registration.update();
-  }
-}).catch(function(error) {
-  // registration failed
-  console.log('Registration failed with ' + error);
-});
