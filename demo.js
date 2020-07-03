@@ -4,7 +4,7 @@ function registerSW() {
   .register('service-worker.js')
   .then(function(registration) {
     // registration worked
-    console.log('Registration succeeded.');
+    console.log('Registration succeeded. ' + JSON.stringify(registration));
     registration.onupdatefound = () => {
       console.log('Registration update found.');
       const installingWorker = registration.installing;
