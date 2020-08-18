@@ -18,6 +18,7 @@ importScripts(
 );
 
 // this comment is to be merged through pull request
+// this is comment line 2 to be merged through pull request
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
